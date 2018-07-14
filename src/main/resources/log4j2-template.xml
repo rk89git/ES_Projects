@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+
+	<Appenders>
+
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}:%L - %m%n" />
+		</Console>
+		<RollingFile name="DbRollingFile" fileName="db.log"
+			filePattern="db.log.%i">
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}:%L - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" fileIndex="1" />
+		</RollingFile>
+	</Appenders>
+
+	<Loggers>
+
+		<!-- Application Loggers -->
+
+		<!-- Root Logger -->
+		<Root level="info">
+			<AppenderRef ref="DbRollingFile" level="info" />
+			<AppenderRef ref="Console" level="info" />
+		</Root>
+	</Loggers>
+</Configuration>

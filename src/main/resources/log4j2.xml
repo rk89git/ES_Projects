@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+
+	<!-- Start: APPENDERS DEFINATION -->
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}:%L - %m%n" />
+		</Console>
+		<RollingFile name="ALL_LOG_APPENDER" fileName="/tmp/db.log"
+			filePattern="/tmp/db-%d{yyyy-MM-dd}.log.%i">
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}:%L - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="15" fileIndex="1">
+				<Delete basePath="${baseLogDir}">
+					<IfFileName glob="db-*.log.*">
+						<IfLastModified age="15d" />
+					</IfFileName>
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+
+		<RollingFile name="ELATIC_REST_LOG_APPENDER" fileName="/tmp/elasticrest.log"
+			filePattern="/tmp/elasticrest-%d{yyyy-MM-dd}.log.%i">
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}:%L - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="15" fileIndex="1">
+				<Delete basePath="${baseLogDir}">
+					<IfFileName glob="elasticrest-*.log.*">
+						<IfLastModified age="10d" />
+					</IfFileName>
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+
+		<RollingFile name="REC_PRODUCT_APPENDER" fileName="/tmp/recproduct.log"
+			filePattern="/tmp/recproduct-%d{yyyy-MM-dd}.log.%i">
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}:%L - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="15" fileIndex="1">
+				<Delete basePath="${baseLogDir}">
+					<IfFileName glob="recproduct-*.log.*">
+						<IfLastModified age="10d" />
+					</IfFileName>
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+
+		<RollingFile name="WISDOM_APPENDER" fileName="/tmp/wisdom.log"
+			filePattern="/tmp/wisdom-%d{yyyy-MM-dd}.log.%i">
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}:%L - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="15" fileIndex="1">
+				<Delete basePath="${baseLogDir}">
+					<IfFileName glob="wisdom-*.log.*">
+						<IfLastModified age="10d" />
+					</IfFileName>
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+
+		<RollingFile name="NOTIFICATION_APPENDER" fileName="/tmp/notification.log"
+			filePattern="/tmp/notification-%d{yyyy-MM-dd}.log.%i">
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}:%L - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="15" fileIndex="1">
+				<Delete basePath="${baseLogDir}">
+					<IfFileName glob="notification-*.log.*">
+						<IfLastModified age="10d" />
+					</IfFileName>
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+
+		<RollingFile name="CRICKET_APPENDER" fileName="/tmp/cricket.log"
+			filePattern="/tmp/cricket-%d{yyyy-MM-dd}.log.%i">
+			<PatternLayout>
+				<pattern>%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}:%L - %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="15" fileIndex="1">
+				<Delete basePath="${baseLogDir}">
+					<IfFileName glob="cricket-*.log.*">
+						<IfLastModified age="10d" />
+					</IfFileName>
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+	</Appenders>
+	<!-- End: APPENDERS DEFINATION -->
+
+	<!-- ENABLE LOGGERS -->
+	<Loggers>
+		<!-- Root Logger -->
+		<Root level="info">
+			<AppenderRef ref="ALL_LOG_APPENDER" level="info" />
+<!-- 			<AppenderRef ref="Console" level="info" /> -->
+		</Root>
+		<!-- Application Loggers -->
+		<Logger name="com.db.elastic" level="info">
+			<AppenderRef ref="ELATIC_REST_LOG_APPENDER" level="info" />
+		</Logger>
+
+		<Logger name="com.db.recommendation" level="info">
+			<AppenderRef ref="REC_PRODUCT_APPENDER" level="info" />
+		</Logger>
+
+		<Logger name="com.db.wisdom" level="info">
+			<AppenderRef ref="WISDOM_APPENDER" level="info" />
+		</Logger>
+
+		<Logger name="com.db.notification" level="info">
+			<AppenderRef ref="NOTIFICATION_APPENDER" level="info" />
+		</Logger>
+
+		<Logger name="com.db.cricket" level="info">
+			<AppenderRef ref="CRICKET_APPENDER" level="info" />
+		</Logger>
+	</Loggers>
+</Configuration>

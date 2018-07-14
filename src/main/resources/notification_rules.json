@@ -1,0 +1,30 @@
+{
+  "rules": {
+    "ranges": [
+      {
+        "field": "appAge",
+        "gte": 0,
+        "lte": 7,
+        "count": 3
+      },
+      {
+        "field": "appAge",
+        "gte": 8,
+        "lte": 15,
+        "count": 5
+      },
+      {
+        "field": "appAge",
+        "gte": 16,
+        "lte": 30,
+        "count": 7
+      },
+      {
+        "field": "appAge",
+        "gte": 31,
+        "lte": 45,
+        "count": 9
+      }
+    ]
+  }
+}
